@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import NewsItem from './NewsItem'
+import dataArray from '../assets/newsContent'
 
 
 const Newsboard = ({category}) => {
 
     const [articles, setArticles] = useState([])
 
+    // useEffect(() =>{
+    //     const url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=14b4c7b6a08a4f87909f2fd02fbb48f2`
+    //     fetch(url).then(response => response.json()).then(data => setArticles(data.articles))
+    // }, [category])
+
     useEffect(() =>{
-        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=14b4c7b6a08a4f87909f2fd02fbb48f2`
-        fetch(url).then(response => response.json()).then(data => setArticles(data.articles))
+        setArticles(dataArray[category])
     }, [category])
 
   return (
